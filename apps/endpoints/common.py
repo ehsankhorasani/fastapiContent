@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 
-from apps.models.common import CommonModel, CommonResponse
+from apps.models.content import CommonModel, CommonResponse
 
 router = APIRouter(
     prefix="/common",
