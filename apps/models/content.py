@@ -1,12 +1,23 @@
-from typing import Optional, Union
+import enum
+from datetime import datetime
 
-from pydantic import BaseModel
+from sqlalchemy import Column, String, Integer, DateTime, Enum
 
-
-class CommonModel(BaseModel):
-    name: str
-    day: float | int | None = "AAAa"
+from apps.database.connection import Base
 
 
-class CommonResponse(BaseModel):
-    name: str
+class ContentType(enum.Enum):
+    serial = 1
+    movie = 2
+
+
+class Content(Base):
+    __tablename__ = "content"
+    id = Column(Integer, primary_key=True, index=True)
+    persian_title = Column(String, index=True)
+    english_title = Column(String, nullable=True)
+    age = Column(Integer)
+    poster = Column(String, nullable=True)
+    content_type = Column(Enum(ContentType))
+    created_at = Column(DateTime, default=datetime.now)
+    updated_at = Column(DateTime, onupdate=datetime.now)
