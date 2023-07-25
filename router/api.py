@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from apps.endpoints import common
+from apps import views
 
 router = APIRouter()
-router.include_router(common.router)
+router.include_router(views.router)

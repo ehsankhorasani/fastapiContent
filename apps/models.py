@@ -4,11 +4,7 @@ from datetime import datetime
 from sqlalchemy import Column, String, Integer, DateTime, Enum
 
 from apps.database.connection import Base
-
-
-class ContentType(enum.Enum):
-    serial = 1
-    movie = 2
+from apps.utils import ContentType
 
 
 class Content(Base):
