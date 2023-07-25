@@ -18,4 +18,7 @@ async def create_content(content: ContentBase, db: Session = Depends(get_db)):
     return db_content
 
 
-
+@router.get("/{content_id}", response_model=ContentResponse)
+async def get_content(content_id: int, db: Session = Depends(get_db)):
+    content = crud.get_content(db=db, content_id=content_id)
+    return content

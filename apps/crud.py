@@ -12,3 +12,6 @@ def create_content(db: Session, c: ContentBase):
     return content
 
 
+def get_content(db: Session, content_id: int):
+    content = db.query(Content).filter(Content.id == content_id).first()
+    return content
